@@ -1,0 +1,932 @@
+openapi: 3.0.0
+info:
+  title: Tudip Mini Project
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local server
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        gender:
+          type: string
+        mobile:
+          type: number
+        pincode:
+          type: number
+        address:
+          type: string
+        role:
+          type: string
+        isActive:
+          type: boolean
+        isVerified:
+          type: boolean
+        favoriteProducts:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - email
+        - password
+        - role
+        - isActive
+
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+      required:
+        - name
+        - description
+        - price
+
+    Cart:
+      type: object
+      properties:
+        userId:
+          type: string
+        items:
+          type: array
+        totalPrice:
+          type: number
+        totalItems:
+          type: string
+      required:
+        - userId
+
+    Offer:
+      type: object
+      properties:
+        userId:
+          type: string
+        name:
+          type: string
+        productId:
+          type: string
+        quantity:
+          type: number
+        title:
+          type: string
+        claimedCount:
+          type: number
+        pointsPerOffer:
+          type: number
+      required:
+        - userId
+        - name
+        - productId
+
+    Review:
+      type: object
+      properties:
+        userId:
+          type: string
+        productId:
+          type: string
+        rating:
+          type: number
+        review:
+          type: string
+      required:
+        - userId
+        - productId
+        - rating
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /user/createUser:
+    post:
+      description: Create a new user with the provided details
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /user/login:
+    post:
+      description: Login user by email and password
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /user/getAllUser:
+    get:
+      description: Retrieve a list of all users
+      tags:
+        - User
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /user/getUserByQueryString?userId=userId:
+    get:
+      description: Get all user details by query string
+      tags:
+        - User
+      parameters:
+        - in: query
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: Please provide userId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /user/getUserByQueryParams/{userId}:
+    get:
+      description: Get all user details by query params
+      tags:
+        - User
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: Please provide userId
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        400:
+          description: Bad request
+
+  /user/getUserByLimit:
+    get:
+      description: Show only limited users
+      tags:
+        - User
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: true
+          description: Please provide number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /user/getUser:
+    get:
+      description: Find user based on query parameters
+      tags:
+        - User
+      parameters:
+        - in: query
+          name: role
+          description: Role of the user
+          schema:
+            type: string
+        - in: query
+          name: isActive
+          description: Active status of the user
+          schema:
+            type: boolean
+        - in: query
+          name: name
+          description: Name of the user
+          schema:
+            type: string
+        - in: query
+          name: email
+          description: Email of the user
+          schema:
+            type: string
+            format: email
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /user/updateUser/{userId}:
+    put:
+      description: Update a user with the provided details
+      tags:
+        - User
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: Please provide userId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /user/deleteUser/{userId}:
+    put:
+      description: Delete a user with the provided userId
+      tags:
+        - User
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: Please provide userId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Bad request
+
+  /product/createProduct:
+    post:
+      description: Create product
+      security:
+        - bearerAuth: []
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /product/getAllProduct:
+    get:
+      description: Get all products
+      security:
+        - bearerAuth: []
+      tags:
+        - Product
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /product/searchProduct:
+    get:
+      description: Search product by name, city, and price (less than the given price)
+      security:
+        - bearerAuth: []
+      tags:
+        - Product
+      parameters:
+        - in: query
+          name: name
+          description: Please enter name
+          schema:
+            type: string
+        - in: query
+          name: city
+          description: Please enter city
+          schema:
+            type: string
+        - in: query
+          name: price
+          description: Please enter price
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /product/sortProduct:
+    get:
+      description: Sort product by name and price
+      security:
+        - bearerAuth: []
+      tags:
+        - Product
+      parameters:
+        - in: query
+          name: name
+          description: Please enter 1 for ascending sort and -1 for descending sort
+          schema:
+            type: number
+        - in: query
+          name: price
+          description: Please enter 1 for ascending sort and -1 for descending sort
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /product/updateProduct/{productId}:
+    put:
+      description: Update product
+      security:
+        - bearerAuth: []
+      tags:
+        - Product
+      parameters:
+        - in: path
+          name: productId
+          schema:
+            type: string
+          required: true
+          description: Please provide productId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /product/deleteProduct:
+    delete:
+      description: Delete product
+      security:
+        - bearerAuth: []
+      tags:
+        - Product
+      parameters:
+        - in: query
+          name: productId
+          description: Please enter productId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /favorite/addFavoriteProduct:
+    post:
+      description: Add product as favorite
+      security:
+        - bearerAuth: []
+      tags:
+        - Favorite Product
+      parameters:
+        - in: query
+          name: productId
+          description: Please enter productId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /favorite/getAllFavoriteProduct:
+    get:
+      description: Get all favorite product
+      security:
+        - bearerAuth: []
+      tags:
+        - Favorite Product
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /favorite/removeFavoriteProduct:
+    put:
+      description: Remove product as favorite
+      security:
+        - bearerAuth: []
+      tags:
+        - Favorite Product
+      parameters:
+        - in: query
+          name: productId
+          description: Please enter productId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /cart/createCart:
+    post:
+      description: Add product to the cart
+      security:
+        - bearerAuth: []
+      tags:
+        - Cart
+      parameters:
+        - in: query
+          name: productId
+          schema:
+            type: string
+          required: true
+          description: Please provide the productId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /cart/getCart:
+    get:
+      description: Get all the products that are currently available in the cart
+      security:
+        - bearerAuth: []
+      tags:
+        - Cart
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /cart/sortCartProduct:
+    get:
+      description: Sort cart products by name and price
+      security:
+        - bearerAuth: []
+      tags:
+        - Cart
+      parameters:
+        - in: query
+          name: name
+          description: Please enter 1 for ascending sort and -1 for descending sort
+          schema:
+            type: number
+        - in: query
+          name: price
+          description: Please enter 1 for ascending sort and -1 for descending sort
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /cart/searchProductInCart:
+    get:
+      description: Search for a product in the cart by name and city
+      security:
+        - bearerAuth: []
+      tags:
+        - Cart
+      parameters:
+        - in: query
+          name: name
+          description: Please enter the name
+          schema:
+            type: string
+        - in: query
+          name: city
+          description: Please enter the city
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /cart/updateCart:
+    put:
+      description: Increase or decrease the quantity in the cart
+      security:
+        - bearerAuth: []
+      tags:
+        - Cart
+      parameters:
+        - in: query
+          name: productId
+          description: Please enter the productId
+          schema:
+            type: string
+            required: true
+        - in: query
+          name: quantity
+          description: Enter the quantity as a number
+          schema:
+            type: number
+            required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /cart/deleteCart:
+    put:
+      description: Delete the cart
+      security:
+        - bearerAuth: []
+      tags:
+        - Cart
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  paths:
+  /offer/createOffer:
+    post:
+      description: Create an offer for a user with the provided details
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Offer"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Offer"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /offer/getOffer:
+    get:
+      description: Get offer details of the user
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Offer"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /offer/updateOffer:
+    put:
+      description: Update an offer for a user with the provided details
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer
+      parameters:
+        - in: query
+          name: offerId
+          schema:
+            type: string
+          required: true
+          description: Please provide the offerId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Offer"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Offer"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /offer/deleteOffer:
+    delete:
+      description: Delete an offer for a user
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer
+      parameters:
+        - in: query
+          name: offerId
+          schema:
+            type: string
+          required: true
+          description: Please provide the offerId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Offer"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /review/createReview:
+    post:
+      description: Create a review for the product
+      security:
+        - bearerAuth: []
+      tags:
+        - Review
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /review/getReview:
+    get:
+      description: Get all the reviews given by this user
+      security:
+        - bearerAuth: []
+      tags:
+        - Review
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /review/updateReview:
+    put:
+      description: Update a review for the product
+      security:
+        - bearerAuth: []
+      tags:
+        - Review
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+
+  /review/deleteReview:
+    delete:
+      description: Delete a review for the product
+      security:
+        - bearerAuth: []
+      tags:
+        - Review
+      parameters:
+        - in: query
+          name: productId
+          schema:
+            type: string
+          required: true
+          description: Please provide productId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized

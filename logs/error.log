@@ -1,0 +1,50 @@
+{"level":"error","message":"Cast to ObjectId failed for value \"645ba2fc4197744261ebeee\" (type string) at path \"_id\" for model \"User\"","timestamp":"2023-05-29T09:22:36.264Z"}
+{"level":"error","message":"err is not defined","timestamp":"2023-05-29T11:22:42.812Z"}
+{"level":"error","message":"err is not defined","timestamp":"2023-05-29T11:24:57.363Z"}
+{"level":"error","message":"err is not defined","timestamp":"2023-05-29T11:30:44.762Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T11:31:51.036Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T11:32:17.233Z"}
+{"level":"error","message":"validation.isValidRequestBody is not a function","timestamp":"2023-05-29T11:32:34.311Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"645d046378a37e908a6c579\" (type string) at path \"_id\" for model \"Product\"","timestamp":"2023-05-29T11:33:46.148Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading '0')","timestamp":"2023-05-29T11:35:18.122Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading '0')","timestamp":"2023-05-29T11:35:32.293Z"}
+{"level":"error","message":"error is not defined","timestamp":"2023-05-29T11:35:57.279Z"}
+{"level":"error","message":"error is not defined","timestamp":"2023-05-29T11:36:11.565Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading '0')","timestamp":"2023-05-29T11:36:21.324Z"}
+{"level":"error","message":"Cannot read properties of undefined (reading '0')","timestamp":"2023-05-29T11:37:01.550Z"}
+{"level":"error","message":"error.filter is not a function","timestamp":"2023-05-29T11:42:08.247Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T11:47:39.653Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"645d046378a37e908a6c5791      \" (type string) at path \"_id\" for model \"Product\"","timestamp":"2023-05-29T11:52:10.834Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"645d046378a37e908a6c5791      \" (type string) at path \"_id\" for model \"Product\"","timestamp":"2023-05-29T11:52:25.865Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T11:56:37.621Z"}
+{"level":"error","message":"validation.isValidRequestBody is not a function","timestamp":"2023-05-29T11:56:50.649Z"}
+{"level":"error","message":{"accepted":["rahulravidas023@gmail.com"],"ehlo":["SIZE 35882577","8BITMIME","AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH","ENHANCEDSTATUSCODES","PIPELINING","CHUNKING","SMTPUTF8"],"envelope":{"from":"rahulravidas023@gmail.com","to":["rahulravidas023@gmail.com"]},"envelopeTime":952,"messageId":"<f3d07d27-47b3-b097-5121-159d228d363b@gmail.com>","messageSize":151,"messageTime":618,"rejected":[],"response":"250 2.0.0 OK  1685379815 d5-20020a170903230500b001ab1d23bf5dsm8484745plh.258 - gsmtp"},"timestamp":"2023-05-29T17:03:35.166Z"}
+{"level":"error","message":"Cast to ObjectId failed for value \"645ba2fc4197744261ebeee\" (type string) at path \"_id\" for model \"User\"","timestamp":"2023-05-29T17:03:47.016Z"}
+{"level":"error","message":"Cast to Number failed for value \"afhd\" (type string) at path \"limit\"","timestamp":"2023-05-29T17:04:09.631Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T17:19:06.400Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T17:28:19.875Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T17:28:33.776Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T17:31:58.430Z"}
+{"level":"error","message":"E11000 duplicate key error collection: miniProject.users index: mobileNumber_1 dup key: { mobileNumber: 9857654023.0 }","timestamp":"2023-05-29T17:40:21.798Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-29T17:50:21.126Z"}
+{"level":"error","message":"reviewSchema is not defined","timestamp":"2023-05-29T17:51:01.421Z"}
+{"level":"error","message":"validation.isValidRequestBody is not a function","timestamp":"2023-05-29T17:51:22.494Z"}
+{"level":"error","message":"E11000 duplicate key error collection: miniProject.products index: name_1 dup key: { name: \"kiwi\" }","timestamp":"2023-05-29T17:59:17.980Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-30T08:19:50.808Z"}
+{"level":"error","message":"Schema with external rules must use validateAsync()","timestamp":"2023-05-30T08:22:25.920Z"}
+{"level":"error","message":"E11000 duplicate key error collection: miniProject.users index: mobileNumber_1 dup key: { mobileNumber: 9857654023.0 }","timestamp":"2023-05-30T08:28:52.148Z"}
+{"level":"error","message":"E11000 duplicate key error collection: miniProject.users index: mobileNumber_1 dup key: { mobileNumber: 9857654023.0 }","timestamp":"2023-05-30T08:30:46.171Z"}
+{"level":"error","message":"Cast to Number failed for value \"rahulravidas023@gmail.com\" (type string) at path \"mobileNumber\" for model \"User\"","timestamp":"2023-05-30T08:34:54.952Z"}
+{"level":"error","message":{"accepted":["rahulravidas023@gmail.com"],"ehlo":["SIZE 35882577","8BITMIME","AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH","ENHANCEDSTATUSCODES","PIPELINING","CHUNKING","SMTPUTF8"],"envelope":{"from":"rahulravidas023@gmail.com","to":["rahulravidas023@gmail.com"]},"envelopeTime":1332,"messageId":"<c0db3d4a-e320-6eed-53ab-dd5bc0c598f0@gmail.com>","messageSize":151,"messageTime":1117,"rejected":[],"response":"250 2.0.0 OK  1685435782 f6-20020a056402160600b00510d0afb612sm3986810edv.67 - gsmtp"},"timestamp":"2023-05-30T08:36:22.875Z"}
+{"level":"error","message":"E11000 duplicate key error collection: miniProject.products index: name_1 dup key: { name: \"kiwi\" }","timestamp":"2023-05-30T08:47:19.338Z"}
+{"level":"error","message":"Cast to Number failed for value \"dghsf\" (type string) at path \"price\" for model \"Product\"","timestamp":"2023-05-30T08:58:26.344Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-30T09:21:34.861Z"}
+{"level":"error","message":"quantity is not defined","timestamp":"2023-05-30T11:57:25.203Z"}
+{"level":"error","message":"quantity is not defined","timestamp":"2023-05-30T11:59:23.861Z"}
+{"level":"error","message":"Cast to Number failed for value \"NaN\" (type number) at path \"totalPrice\"","timestamp":"2023-05-30T12:55:20.049Z"}
+{"level":"error","message":{"accepted":["rahulravidas023@gmail.com"],"ehlo":["SIZE 35882577","8BITMIME","AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH","ENHANCEDSTATUSCODES","PIPELINING","CHUNKING","SMTPUTF8"],"envelope":{"from":"rahulravidas023@gmail.com","to":["rahulravidas023@gmail.com"]},"envelopeTime":847,"messageId":"<fc9a127b-51d6-4215-c4f3-28457a823190@gmail.com>","messageSize":151,"messageTime":740,"rejected":[],"response":"250 2.0.0 OK  1685471848 c15-20020aa78e0f000000b0064fd4a6b306sm1951885pfr.76 - gsmtp"},"timestamp":"2023-05-30T18:37:29.116Z"}
+{"level":"error","message":{"accepted":["rahulravidas023@gmail.com"],"ehlo":["SIZE 35882577","8BITMIME","AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH","ENHANCEDSTATUSCODES","PIPELINING","CHUNKING","SMTPUTF8"],"envelope":{"from":"rahulravidas023@gmail.com","to":["rahulravidas023@gmail.com"]},"envelopeTime":692,"messageId":"<90269038-ce0d-34e4-6bb0-d3aac11eddd0@gmail.com>","messageSize":151,"messageTime":604,"rejected":[],"response":"250 2.0.0 OK  1685471880 u8-20020a170902e80800b001b02bd00c61sm6635072plg.237 - gsmtp"},"timestamp":"2023-05-30T18:38:00.991Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-30T18:39:14.684Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-30T18:44:53.193Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-30T18:46:57.315Z"}
+{"level":"error","message":"Token has expired","timestamp":"2023-05-30T18:50:42.340Z"}
